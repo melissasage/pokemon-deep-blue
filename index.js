@@ -1,16 +1,18 @@
 const WebSocket = require("ws");
 const axios = require("axios");
 const secrets = require("./secrets");
+
 const url = "ws://sim.smogon.com:8000/showdown/websocket";
-
 const ws = new WebSocket(url);
-f
 const username = "porygon1809";
+let loggedIn = false;
+const getChallstr = str => {
+  const findChallStr = /^|challstr|([\S*])$/;
+  return findChallStr.test(str);
+};
 
-const callYourMom = text => `|/pm melissasage, ${text}`;
-// const nameMyself = name => `|updateuser `;
-const helloWorld = () => {
-  ws.send(callYourMom("hi mom!"));
+const startBattle = () => {
+  ws.send("|/challenge melissasage, gen1randombattle");
 };
 
 const login = async challstr => {
@@ -31,12 +33,13 @@ const login = async challstr => {
 ws.on("open", function open() {
   console.log("Connection has been established.");
 
-  ws.on("message", function incoming(message) {
+  ws.on("message", async function incoming(message) {
     console.log(`>> ${message}`);
-    if (getChallstr(message)) {
+    if (getChallstr(message) && loggedIn == false) {
+      loggedIn = true;
       const assertion = await login(RegExp.$1);
       ws.send(`|/trn ${username},0,${assertion}`);
-      helloWorld();
+      startBattle();
     }
   });
 });

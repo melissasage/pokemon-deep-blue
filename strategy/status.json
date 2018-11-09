@@ -1,0 +1,113 @@
+{
+  "active": [
+    {
+      "moves": [
+        {
+          "move": "Body Slam",
+          "id": "bodyslam",
+          "pp": 24,
+          "maxpp": 24,
+          "target": "normal",
+          "disabled": false
+        },
+        {
+          "move": "Slash",
+          "id": "slash",
+          "pp": 32,
+          "maxpp": 32,
+          "target": "normal",
+          "disabled": false
+        },
+        {
+          "move": "Surf",
+          "id": "surf",
+          "pp": 24,
+          "maxpp": 24,
+          "target": "allAdjacentFoes",
+          "disabled": false
+        },
+        {
+          "move": "Blizzard",
+          "id": "blizzard",
+          "pp": 8,
+          "maxpp": 8,
+          "target": "normal",
+          "disabled": false
+        }
+      ]
+    }
+  ],
+  "side": {
+    "name": "Guest 9103408",
+    "id": "p1",
+    "pokemon": [
+      {
+        "ident": "p1: Kabuto",
+        "details": "Kabuto, L88",
+        "condition": "232/232",
+        "active": true,
+        "stats": { "atk": 227, "def": 245, "spa": 166, "spd": 166, "spe": 183 },
+        "moves": ["bodyslam", "slash", "surf", "blizzard"],
+        "baseAbility": "none",
+        "item": "",
+        "pokeball": "pokeball"
+      },
+      {
+        "ident": "p1: Vileplume",
+        "details": "Vileplume, L74",
+        "condition": "263/263",
+        "active": false,
+        "stats": { "atk": 192, "def": 199, "spa": 221, "spd": 221, "spe": 147 },
+        "moves": ["megadrain", "bodyslam", "stunspore", "swordsdance"],
+        "baseAbility": "none",
+        "item": "",
+        "pokeball": "pokeball"
+      },
+      {
+        "ident": "p1: Ditto",
+        "details": "Ditto, L88",
+        "condition": "264/264",
+        "active": false,
+        "stats": { "atk": 171, "def": 171, "spa": 171, "spd": 171, "spe": 171 },
+        "moves": ["transform"],
+        "baseAbility": "none",
+        "item": "",
+        "pokeball": "pokeball"
+      },
+      {
+        "ident": "p1: Nidoqueen",
+        "details": "Nidoqueen, L74",
+        "condition": "286/286",
+        "active": false,
+        "stats": { "atk": 195, "def": 202, "spa": 184, "spd": 184, "spe": 186 },
+        "moves": ["earthquake", "thunderbolt", "bodyslam", "blizzard"],
+        "baseAbility": "none",
+        "item": "",
+        "pokeball": "pokeball"
+      },
+      {
+        "ident": "p1: Slowbro",
+        "details": "Slowbro, L68",
+        "condition": "270/270",
+        "active": false,
+        "stats": { "atk": 170, "def": 217, "spa": 177, "spd": 177, "spe": 109 },
+        "moves": ["rest", "amnesia", "thunderwave", "surf"],
+        "baseAbility": "none",
+        "item": "",
+        "pokeball": "pokeball"
+      },
+      {
+        "ident": "p1: Alakazam",
+        "details": "Alakazam, L68",
+        "condition": "216/216",
+        "active": false,
+        "stats": { "atk": 136, "def": 129, "spa": 251, "spd": 251, "spe": 231 },
+        "moves": ["seismictoss", "psychic", "thunderwave", "recover"],
+        "baseAbility": "none",
+        "item": "",
+        "pokeball": "pokeball"
+      }
+    ]
+  },
+  "rqid": 2
+}
