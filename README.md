@@ -10,7 +10,7 @@ Porygon is an AI that plays Pokemon Generation I- Red, Blue, Yellow- through the
 
 Next, `touch secrets.js` and in it define two `process.env` variables: `PASSWORD`, the password to the bot account, and `CHALLENGER`, which is the username you'd like the bot to issue challenges to.
 
-Accept the challenge on Showdown, and tada! You're playing against the bot.
+Run `npm start`, accept the challenge on Showdown, and tada! You're playing against the bot.
 
 ## Features
 
@@ -20,3 +20,4 @@ Known bugs:
 
 - Login to bot account is sometimes unsuccessful for unknown reasons.
 - Bot may freeze or crash when one of its pokemon faints.
+- Algorithm occasionally attempts to switch to the active pokemon, and then freezes.
