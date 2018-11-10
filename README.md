@@ -2,7 +2,7 @@
 
 My contribution to the Stackathon of Grace Hopper cohort 1809 at Fullstack Academy.
 
-Porygon is an AI that plays Pokemon Generation I- Red, Blue, Yellow- through the Pokemon Showdown server.
+Pokemon Deep Blue is an AI that plays Pokemon Generation I battles- Red, Blue, Yellow- through the Pokemon Showdown server.
 
 ## Installation
 
