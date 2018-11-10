@@ -5,7 +5,7 @@ const pickAction = require("./strategy/random");
 
 const url = "ws://sim.smogon.com:8000/showdown/websocket";
 const ws = new WebSocket(url);
-const username = "porygon1809";
+const username = "pokemondeepblue";
 let loggedIn = false;
 let battleId = "";
 let status = "";
@@ -46,15 +46,26 @@ ws.on("message", async function incoming(message) {
     startBattle();
   } else if (/(battle\-[\w\d]+\-[\d]+)/.test(message)) {
     if (!battleId) battleId = RegExp.$1;
-    console.log("battleId:", battleId);
     const request = /(\|request\|)(.*$)/.test(message);
     if (request) {
       status = RegExp.$2;
+      if (/forceSwitch/.test(status)) {
+        const action = pickAction(status, battleId);
+        ws.send(action);
+      }
     } else if (status && /\|turn\|\d/.test(message)) {
       const action = pickAction(status, battleId);
       ws.send(action);
     }
+  } else if (/\|error\|\[Invalid choice\]/) {
+    //try again until you pick something legal.
+    pickAction(status, battleId);
+    ws.send(action);
   }
+  // } else if (/\|faint|/) {
+  //   pickAction(status, battleId, "switch");
+  //   ws.send(action);
+  // }
 });
 
 ws.on("send", function incoming(message) {

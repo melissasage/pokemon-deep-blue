@@ -140,3 +140,4 @@ $RECYCLE.BIN/
 secrets.js
 # Pokemon Showdown repo, downloaded for reference.
 /Pokemon-Showdown
+/.vscode

@@ -4,5 +4,6 @@
 [x] set up a proof of concept AI that plays random moves.
 [] Fix bug preventing AI from switching when a pokemon faints.
 [] Fix bug preventing AI from logging in on its account.
+[] Fix bugs caused by positional layout of action arguments.
 [] AI should re-challenge when a battle is concluded.
 [] implement an AI that learns through its plays, via TensorFlow.js.
