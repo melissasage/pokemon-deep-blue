@@ -9,13 +9,19 @@ const username = "pokemondeepblue";
 let loggedIn = false;
 let battleId = "";
 let status = "";
+
+const sendAndLog = message => {
+  console.log("<< ", message);
+  ws.send(message);
+};
+
 const getChallstr = str => {
   const findChallStr = /^|challstr|([\S*])$/;
   return findChallStr.test(str);
 };
 
-const startBattle = () => {
-  ws.send(`|/challenge ${process.env.CHALLENGER}, gen1randombattle`);
+const sendChallenge = () => {
+  sendAndLog(`|/challenge ${process.env.CHALLENGER}, gen1randombattle`);
 };
 
 const login = async challstr => {
@@ -42,8 +48,8 @@ ws.on("message", async function incoming(message) {
   if (getChallstr(message) && loggedIn == false) {
     loggedIn = true;
     const assertion = await login(RegExp.$1);
-    ws.send(`|/trn ${username},0,${assertion}`);
-    startBattle();
+    sendAndLog(`|/trn ${username},0,${assertion}`);
+    sendChallenge();
   } else if (/(battle\-[\w\d]+\-[\d]+)/.test(message)) {
     if (!battleId) battleId = RegExp.$1;
     const request = /(\|request\|)(.*$)/.test(message);
@@ -51,24 +57,23 @@ ws.on("message", async function incoming(message) {
       status = RegExp.$2;
       if (/forceSwitch/.test(status)) {
         const action = pickAction(status, battleId);
-        ws.send(action);
+        sendAndLog(action);
       }
     } else if (status && /\|turn\|\d/.test(message)) {
       const action = pickAction(status, battleId);
-      ws.send(action);
+      sendAndLog(action);
+    } else if (/\|error\|\[Invalid choice\]/.test(message)) {
+      //try again until you pick something legal.
+      console.log("Oops! Let's try again...");
+      const action = pickAction(status, battleId);
+      sendAndLog(action);
+    } else if (/\|win|/.test(message)) {
+      sendChallenge();
     }
-  } else if (/\|error\|\[Invalid choice\]/.test(message)) {
-    //try again until you pick something legal.
-    pickAction(status, battleId);
-    ws.send(action);
   }
-  // } else if (/\|faint|/) {
-  //   pickAction(status, battleId, "switch");
-  //   ws.send(action);
-  // }
 });
 
-ws.on("send", function incoming(message) {
+ws.on("send", function(message) {
   console.log(`<< ${message}`);
 });
 

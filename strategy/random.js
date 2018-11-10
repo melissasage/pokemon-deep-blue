@@ -36,12 +36,12 @@ const pickRandomly = array => Math.floor(Math.random() * array.length);
 
 const pickAction = (message, roomId) => {
   const legalActions = getLegalActions(message);
-  if (legalActions.forceSwitch)
-    console.log("The action picker should be forcing a switch");
-  if (Math.random() < 0.8 && !legalActions.forceSwitch) {
+  if (
+    (Math.random() < 0.8 && !legalActions.forceSwitch) ||
+    legalActions.switches === []
+  ) {
     return `${roomId}|/move ${pickRandomly(legalActions.moves) + 1}`;
   } else {
-    console.log("legalActions.switches:", legalActions.switches);
     return `${roomId}|/switch ${
       legalActions.switches[pickRandomly(legalActions.switches)]
     }`;
