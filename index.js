@@ -15,7 +15,7 @@ const getChallstr = str => {
 };
 
 const startBattle = () => {
-  ws.send("|/challenge melissasage, gen1randombattle");
+  ws.send(`|/challenge ${process.env.CHALLENGER}, gen1randombattle`);
 };
 
 const login = async challstr => {
@@ -57,7 +57,7 @@ ws.on("message", async function incoming(message) {
       const action = pickAction(status, battleId);
       ws.send(action);
     }
-  } else if (/\|error\|\[Invalid choice\]/) {
+  } else if (/\|error\|\[Invalid choice\]/.test(message)) {
     //try again until you pick something legal.
     pickAction(status, battleId);
     ws.send(action);
