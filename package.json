@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "tensorflow": "^0.7.0",
     "ws": "^6.1.0"
   }
 }

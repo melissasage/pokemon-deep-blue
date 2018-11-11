@@ -16,7 +16,7 @@ Run `npm start`, accept the challenge on Showdown, and tada! You're playing agai
 
 Right now, the bot defaults to a random algorithm, where it chooses a move 80% of the time, and switches the other 20%.
 
-[An example of random algorithm play.](http://replay.pokemonshowdown.com/gen1randombattle-833459054). The bot is the guest account.
+[An example of random algorithm play.](http://replay.pokemonshowdown.com/gen1randombattle-833459054) The bot is the guest account.
 
 Known bugs:
 

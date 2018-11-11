@@ -67,7 +67,7 @@ ws.on("message", async function incoming(message) {
       console.log("Oops! Let's try again...");
       const action = pickAction(status, battleId);
       sendAndLog(action);
-    } else if (/\|win|/.test(message)) {
+    } else if (/\|win\|/.test(message)) {
       sendChallenge();
     }
   }
